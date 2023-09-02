@@ -52,4 +52,14 @@ public class Cow {
 
 //    to string
 
+
+    @Override
+    public String toString() {
+        return "Cow{" +
+                "Id=" + Id +
+                ", Breed='" + Breed + '\'' +
+                ", colour='" + colour + '\'' +
+                ", age='" + age + '\'' +
+                '}';
+    }
 }
