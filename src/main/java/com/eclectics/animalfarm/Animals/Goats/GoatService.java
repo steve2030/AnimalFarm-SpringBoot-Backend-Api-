@@ -4,6 +4,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Stream;
+
 
 @Service
 public class GoatService {
@@ -16,5 +18,12 @@ public class GoatService {
     );
     public List<Goat>getGoats(){
         return goats;
+    }
+
+    public Goat getGoat(String Id){
+//        return goats.stream().filter(t->t.getId().equals(Id)).findFirst().get();
+        return goats.stream().filter(t -> Long.valueOf(t.getId()).equals(Id)).findFirst().orElse(null); // Handle the case when no matching element is found
+
+
     }
 }
