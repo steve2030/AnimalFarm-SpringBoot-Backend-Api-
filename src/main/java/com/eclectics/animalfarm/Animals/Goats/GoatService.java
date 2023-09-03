@@ -2,6 +2,7 @@ package com.eclectics.animalfarm.Animals.Goats;
 
 import org.springframework.stereotype.Service;
 
+import java.text.NumberFormat;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
@@ -20,10 +21,22 @@ public class GoatService {
         return goats;
     }
 
-    public Goat getGoat(String Id){
-//        return goats.stream().filter(t->t.getId().equals(Id)).findFirst().get();
-        return goats.stream().filter(t -> Long.valueOf(t.getId()).equals(Id)).findFirst().orElse(null); // Handle the case when no matching element is found
-
-
+    public Goat getGoat(String Id) {
+        try{
+           Long idAsLong = Long.valueOf(Id);
+            Goat goat = goats.stream()
+                    .filter(t -> idAsLong.equals(Long.valueOf(t.getId())))
+                   .findFirst()
+                   .orElse(null);
+           return goat;
+       }catch(NumberFormatException e){
+            return (null);
+        }
     }
+
+
+
+
+
+
 }
