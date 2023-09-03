@@ -22,17 +22,17 @@ public class GoatService {
     }
 
     public Goat getGoat(String Id) {
-        try{
-           Long idAsLong = Long.valueOf(Id);
-            Goat goat = goats.stream()
-                    .filter(t -> idAsLong.equals(Long.valueOf(t.getId())))
-                   .findFirst()
-                   .orElse(null);
-           return goat;
-       }catch(NumberFormatException e){
-            return (null);
-        }
+        Long idAsLong = Long.valueOf(Id);
+        Goat goat = goats.stream()
+                .filter(t -> idAsLong.equals(Long.valueOf(t.getId())))
+                .findFirst()
+                .orElse(null);
+        return goat;
+
     }
+
+
+
 
 
 
