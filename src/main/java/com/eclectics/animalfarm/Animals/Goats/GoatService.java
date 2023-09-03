@@ -20,16 +20,15 @@ public class GoatService {
     public List<Goat>getGoats(){
         return goats;
     }
-
-    public Goat getGoat(String Id) {
-        Long idAsLong = Long.valueOf(Id);
-        Goat goat = goats.stream()
-                .filter(t -> idAsLong.equals(Long.valueOf(t.getId())))
+public Goat getGoat(String Id){
+        Long idAsLong= Long.valueOf(Id);
+        Goat goat=goats.stream()
+                .filter(t->idAsLong.equals(Long.valueOf(t.getId())))
                 .findFirst()
                 .orElse(null);
         return goat;
+}
 
-    }
 
 
 
