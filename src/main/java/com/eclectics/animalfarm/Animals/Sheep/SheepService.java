@@ -1,52 +1,33 @@
 package com.eclectics.animalfarm.Animals.Sheep;
 
+import org.springframework.stereotype.Service;
+
+import java.util.Arrays;
+import java.util.List;
+
+@Service
 public class SheepService {
-    private Long Id;
-    private String Breed;
-    private String colour;
-//    constructor
+    private List<Sheep> sheep= Arrays.asList(
+            new Sheep((long)1,"Kienyeji", "Red"),
+            new Sheep((long)2,"Brazaville", "Reddish brown")
+//            new Sheep(3,"Australian Local", "pure white"),
+//            new Sheep(4, "Carribean Flock", "black with white stripes")
 
-    public SheepService(Long id, String breed, String colour) {
-        Id = id;
-        Breed = breed;
-        this.colour = colour;
+
+    );
+    public List<Sheep>getSheep(){
+        return sheep;
     }
 
-//getters &Setters
 
-    public Long getId() {
-        return Id;
+    public Sheep getSheep1(String Id){
+        Long idAsLong=Long.valueOf(Id);
+        Sheep sheep1=sheep.stream()
+                .filter(t->idAsLong.equals(Long.valueOf(t.getId())))
+                .findFirst()
+                .orElse(null);
+
+        return sheep1;
     }
 
-    public void setId(Long id) {
-        Id = id;
-    }
-
-    public String getBreed() {
-        return Breed;
-    }
-
-    public void setBreed(String breed) {
-        Breed = breed;
-    }
-
-    public String getColour() {
-        return colour;
-    }
-
-    public void setColour(String colour) {
-        this.colour = colour;
-    }
-
-//    to string
-
-
-    @Override
-    public String toString() {
-        return "SheepService{" +
-                "Id=" + Id +
-                ", Breed='" + Breed + '\'' +
-                ", colour='" + colour + '\'' +
-                '}';
-    }
 }

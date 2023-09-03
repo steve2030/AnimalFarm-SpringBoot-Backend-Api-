@@ -14,6 +14,7 @@ public class GoatController {
     private GoatService goatService;
     @GetMapping(path = "goats")
     public List<Goat>getGoats(){
+
         return goatService.getGoats();
     }
 
@@ -21,5 +22,7 @@ public class GoatController {
     public Goat getGoat(@PathVariable String id){
         return goatService.getGoat(id);
     }
+
+
 
 }
